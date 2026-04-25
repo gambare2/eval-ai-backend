@@ -1,12 +1,13 @@
 const axios = require("axios");
 
-const analyzeWithCareerAI = async (repoUrl, resumeSkills = []) => {
+const analyzeWithCareerAI = async (repoUrl, resumeSkills = [], interestedField = null) => {
   try {
     const AI_ENGINE_URL = process.env.AI_ENGINE_URL || "http://localhost:8000";
 
     const response = await axios.post(`${AI_ENGINE_URL}/analyze`, {
       repo_url: repoUrl,
       resume_skills: resumeSkills,
+      interested_field: interestedField
     });
 
     return response.data;
